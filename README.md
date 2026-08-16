@@ -41,7 +41,12 @@ DSH Hub 是 [dsh-hub.cc](https://dsh-hub.cc) 的原生 DSH 插件。安装后，
 在 DSH 中新建或打开一个任务，把下面这段话完整交给它：
 
 ```text
-请严格按照 https://dsh-hub.cc/install/dsh-hub.md 安装 DSH Hub 插件商店。先完成安装包校验和 profile 的 pnpm store 兼容检查，再根据结果只执行普通安装命令，或 install --force 后再 add 的两步修复序列；不要先试错，也不要对 add 使用 --force。不要修改 DeepSeek Harness 源码，也不要在 profile 中直接运行 pnpm install/add。先确认 web profile 目录，若它不在沙箱可写范围，在预检前一次性申请仅覆盖 dsh plugin --profile web 及该 profile 的主机权限。
+请严格按照 https://dsh-hub.cc/install/dsh-hub.md 安装 DSH Hub 插件商店。
+先完成安装包校验和 profile 的 pnpm store 兼容检查，再根据结果只执行普通安装命令，
+或 install --force 后再 add 的两步修复序列；不要先试错，也不要对 add 使用 --force。
+不要修改 DeepSeek Harness 源码，也不要在 profile 中直接运行 pnpm install/add。
+先确认 web profile 目录；若它不在沙箱可写范围，在预检前一次性申请仅覆盖
+dsh plugin --profile web 及该 profile 的主机权限。
 ```
 
 安装并重启 Web profile 后，打开：
@@ -109,7 +114,12 @@ DSH Hub brings the community plugin marketplace at [dsh-hub.cc](https://dsh-hub.
 Paste this into an active DSH task to install:
 
 ```text
-Install DSH Hub by following https://dsh-hub.cc/install/dsh-hub.md?lang=en exactly. Verify the package and run the profile pnpm-store compatibility check, then run only the normal install command or the two-step install --force followed by add recovery sequence. Do not trial-and-error and do not pass --force to add. Do not modify DeepSeek Harness source or run pnpm install/add directly in the profile. Resolve the web profile first; if it is outside the writable sandbox, request one host permission scoped to dsh plugin --profile web and that profile before the preflight.
+Install DSH Hub by following https://dsh-hub.cc/install/dsh-hub.md?lang=en exactly.
+Verify the package and run the profile pnpm-store compatibility check, then run only the normal install
+command or the two-step install --force followed by add recovery sequence. Do not trial-and-error and
+do not pass --force to add. Do not modify DeepSeek Harness source or run pnpm install/add directly in
+the profile. Resolve the web profile first; if it is outside the writable sandbox, request one host
+permission scoped to dsh plugin --profile web and that profile before the preflight.
 ```
 
 After restarting the Web profile, open **Settings → DSH HUB Market**. See the [live installation guide](https://dsh-hub.cc/install/dsh-hub.md?lang=en) for the current package version and checksum.
