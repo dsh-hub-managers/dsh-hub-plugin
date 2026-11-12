@@ -14,6 +14,9 @@
     "./cordis.patch.yml": "./cordis.patch.yml",
     "./package.json": "./package.json"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "lib/index.js",
     "lib/index.d.ts",
