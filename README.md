@@ -1,5 +1,5 @@
 <p align="center">
-  <img src=".github/assets/dsh-hub.svg" width="72" height="72" alt="DSH Hub" />
+  <img src="https://raw.githubusercontent.com/dsh-hub-managers/dsh-hub-plugin/main/.github/assets/dsh-hub.svg" width="72" height="72" alt="DSH Hub" />
 </p>
 
 <h1 align="center">DSH Hub</h1>
@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-  <img src=".github/assets/dsh-hub-settings.jpg" width="960" alt="DSH Hub 作为独立页面运行在 DeepSeek Harness 设置中" />
+  <img src="https://raw.githubusercontent.com/dsh-hub-managers/dsh-hub-plugin/main/.github/assets/dsh-hub-settings.jpg" width="960" alt="DSH Hub 作为独立页面运行在 DeepSeek Harness 设置中" />
 </p>
 
 ## 它是什么
@@ -79,26 +79,39 @@ DSH Hub 不绕过 DSH 的权限系统，也不会在点击按钮时直接运行�
 
 没有添加 Topic 的插件也可以从 DSH Hub 的[发布页面](https://dsh-hub.cc/publish)直接提交公开 GitHub 仓库。
 
+## 仓库结构
+
+源码与构建都在上游 monorepo；公开镜像仓库只保存构建产物。
+
+| 仓库 | 作用 |
+| --- | --- |
+| [dsh-hub-managers/dsh-hub](https://github.com/dsh-hub-managers/dsh-hub) | 源码、站点、CI 与发布；插件源码位于 `packages/dsh-hub` |
+| [dsh-hub-managers/dsh-hub-plugin](https://github.com/dsh-hub-managers/dsh-hub-plugin) | 发布镜像，只保存构建产物 `lib/`，供 `dsh plugin add github:...` 直接安装 |
+
+镜像仓库的 `lib/` 由上游 CI 覆盖，**请勿在那里修改代码**；如需发布到 npm，也请在上游仓库执行。
+
+| 路径（上游） | 用途 |
+| --- | --- |
+| `packages/dsh-hub/src/client.tsx` | DSH 设置页、目录查询与安装请求交互 |
+| `packages/dsh-hub/src/index.ts` | Host 侧插件入口 |
+| `packages/dsh-hub/cordis.patch.yml` | 安装到 profile 的 DSH bundle patch |
+| `packages/dsh-hub/tests/` | 注册入口与安装 Prompt 测试 |
+
+构建产物 `lib/` 不进入上游版本库，由 CI 构建。
+
 ## 本地开发
 
-需要 Node.js 22.19+ 与 pnpm 10：
+需要 Node.js 22.19+ 与 pnpm 10，在仓库根目录执行：
 
 ```bash
 pnpm install
 pnpm lint
 pnpm test
 pnpm build
+pnpm --filter @dsh-hub-managers/dsh-hub pack --pack-destination ./dist
 ```
 
-| 路径 | 用途 |
-| --- | --- |
-| `src/client.tsx` | DSH 设置页、目录查询与安装请求交互 |
-| `src/index.ts` | Host 侧插件入口 |
-| `cordis.patch.yml` | 安装到 profile 的 DSH bundle patch |
-| `lib/` | 可直接从 Git 仓库安装的已构建产物 |
-| `tests/` | 注册入口与安装 Prompt 测试 |
-
-问题和建议可以直接提交到 [Issues](https://github.com/sliverp/dsh-hub-plugin/issues)。
+问题和建议可以直接提交到 [Issues](https://github.com/dsh-hub-managers/dsh-hub/issues)。
 
 ---
 

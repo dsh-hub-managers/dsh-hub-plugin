@@ -1,5 +1,5 @@
 {
-  "name": "dsh-hub",
+  "name": "@dsh-hub-managers/dsh-hub",
   "version": "0.2.0",
   "description": "The native DSH plugin marketplace backed by dsh-hub.cc",
   "type": "module",
