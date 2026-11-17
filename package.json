@@ -1,6 +1,6 @@
 {
   "name": "@dsh-hub-managers/dsh-hub",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "The native DSH plugin marketplace backed by dsh-hub.cc",
   "type": "module",
   "main": "lib/index.js",
@@ -31,7 +31,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsdown",
+    "build": "tsdown && node scripts/write-cordis-patch.mjs",
     "lint": "tsc --noEmit",
     "test": "vitest run",
     "prepack": "pnpm build"
